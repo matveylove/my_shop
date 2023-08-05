@@ -1,0 +1,38 @@
+.sort {
+    max-width: 1200px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.list {
+    font-size: 16px;
+}
+
+.item {
+    margin-top: 10px;
+    border: 1px solid black;
+    width: 20%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.item:hover {
+    animation-name: itemAnim;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes itemAnim {
+    from {}
+
+    to {
+        background-color: #222222;
+        color: white;
+    }
+}
+
+.active {
+    background-color: #222222;
+    color: white;
+}

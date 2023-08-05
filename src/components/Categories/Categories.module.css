@@ -1,0 +1,40 @@
+.categories {
+    margin-top: 30px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.item {
+    padding: 2px 7px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #222222;
+
+}
+
+.item:hover {
+    animation-name: itemAnim;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.active {
+    background-color: #222222;
+    color: white;
+}
+
+@keyframes itemAnim {
+    from {}
+
+    to {
+        background-color: #222222;
+        color: white;
+    }
+}

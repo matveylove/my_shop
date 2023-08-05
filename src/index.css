@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+  font-family: 'Ysabeau Infant', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0 20px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.clothesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.App {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  margin-bottom: 50px;
+}

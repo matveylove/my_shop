@@ -1,0 +1,60 @@
+.clothes {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    margin-bottom: 30px;
+    border: 1px solid #222222;
+    padding: 10px;
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: gainsboro;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.clothes img {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.box {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+
+.btn:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.price {
+    color: #222222;
+    font-weight: bold;
+    padding: 2px 5px;
+    border: 1px solid #222222;
+}
+
+.count {
+    margin-left: 10px;
+}
+
+
+.active {
+    background-color: #222222;
+    color: white;
+}
