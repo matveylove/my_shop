@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+.desc {
+    display: flex;
+}
+
 .product {
     width: 30%;
 }
@@ -19,10 +23,11 @@
 
 .close {
     display: inline-block;
+
     color: #222222;
     padding: 10px;
     border: 1px solid #222222;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .img {
@@ -43,4 +48,30 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+.number {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.rating {
+    width: 100%;
+    border-bottom: 1px solid #222222;
+    margin-bottom: 20px;
+}
+
+.ops {
+    margin-left: 20px;
+}
+
+.ops button {
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.count {
+    color: white;
+    margin-left: 10px;
 }
