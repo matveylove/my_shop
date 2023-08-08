@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setItems } from '../../redux/slices/cartSlice';
 // Components
 import MyButton from '../UI/MyButton/MyButton';
+import { Link } from 'react-router-dom';
 
 
 const Clothes = ({ title, price, imageUrl, sizes, rating, id }) => {
@@ -57,6 +58,9 @@ const Clothes = ({ title, price, imageUrl, sizes, rating, id }) => {
                     <span>Добавить</span>
                     <p className={classes.count}>{amount}</p>
                 </MyButton>
+                <Link to={`/product/${id}`}>
+                    <MyButton>Страница товара</MyButton>
+                </Link>
             </div>
         </div>
     )

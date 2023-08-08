@@ -38,14 +38,6 @@ const cartSlice = createSlice({
             });
 
         },
-
-        // incrementCount: (state, action) => {
-        //     const findItem = state.items.find(obj => {
-        //         if (obj.id === action.payload.id && obj.activeSize === action.payload.activeSize) {
-        //             return obj
-        //         }
-        //     });
-        // }
     }
 });
 

@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getClothes = createAsyncThunk(
     'clothes/getClothes',
-    async ({ category, sort, paginationCount }) => {
+    async ({ category, sort, paginationCount }, thunkAPI) => {
         const response = await axios.get(`https://64c8c994a1fe0128fbd635d0.mockapi.io/clothes?page=${paginationCount}&limit=9&${category}${sort}`)
-        return response.data;
+        return thunkAPI.fulfillWithValue(response.data);
     }
 )
 

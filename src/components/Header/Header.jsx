@@ -11,11 +11,11 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <div className={classes.container}>
-                <p>LOGO</p>
+                <Link to={'/'}><p>LOGO</p></Link>
                 <h2 className={classes.title}>Shelma</h2>
                 <div className={classes.right}>
                     <img className={classes.card} src='https://www.svgrepo.com/show/533043/cart-shopping.svg' />
-                    <Link to='/cart'>Корзина</Link>
+                    <Link to='/cart' className={classes.link}>Корзина</Link>
                     <div className={classes.count}>
                         Кол.товаров:
                         <span>{totalCount}</span>
