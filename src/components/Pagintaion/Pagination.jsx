@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 // redux functions
 import { setPaginationCount } from '../../redux/slices/paginationSlice';
-import { setIsLoading } from '../../redux/slices/loadingSlice';
+import { setIsLoading } from '../../redux/slices/clothesSlice';
 // Style 
 import classes from './Pagination.module.css';
 // Components

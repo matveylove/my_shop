@@ -1,33 +1,61 @@
 import classes from './Clothes.module.css';
 import { useState } from 'react';
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+// redux functions
+import { setItems } from '../../redux/slices/cartSlice';
 // Components
 import MyButton from '../UI/MyButton/MyButton';
 
 
-const Clothes = ({ title, price, imageUrl, sizes, rating }) => {
+const Clothes = ({ title, price, imageUrl, sizes, rating, id }) => {
 
-    const [count, setCount] = useState(0);
+    const dispatch = useDispatch();
+
+    const [amount, setAmount] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
+
+    const addItem = () => {
+        const obj = {
+            title,
+            price,
+            imageUrl,
+            activeSize,
+            count: amount + 1,
+            rating,
+            id,
+        }
+        console.log(obj);
+        dispatch(setItems(obj))
+    }
 
     return (
         <div className={classes.clothes}>
             <img src={imageUrl} />
             <ul className={classes.list}>
                 {sizes.map((item, index) => {
-                    return <li
-                        onClick={() => setActiveSize(index)}
-                        key={index}
-                        className={activeSize === index ? [classes.active, classes.item].join(' ') : classes.item}>
-                        {item}
-                    </li>
+                    return (
+                        <li
+                            onClick={() => {
+                                setActiveSize(index)
+                                setAmount(0);
+                            }}
+                            key={Math.random()}
+                            className={activeSize === index ? [classes.active, classes.item].join(' ') : classes.item}>
+                            {item}
+                        </li>
+                    )
                 })}
             </ul>
             <h3>{title}</h3>
             <div className={classes.box}>
                 <span className={classes.price}>{price}₽</span>
-                <MyButton onClick={() => setCount(count + 1)}>
+                <MyButton onClick={() => {
+                    setAmount(amount + 1)
+                    addItem()
+                }}>
                     <span>Добавить</span>
-                    <p className={classes.count}>{count}</p>
+                    <p className={classes.count}>{amount}</p>
                 </MyButton>
             </div>
         </div>

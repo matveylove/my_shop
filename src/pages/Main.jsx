@@ -9,18 +9,14 @@ import Pagination from "../components/Pagintaion/Pagination";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 // Functions Redux
-import { updateClothes } from "../redux/slices/clothesSlice";
-import { setIsLoading } from "../redux/slices/loadingSlice";
-// import API
-import ClothesService from "../API/ClothesService";
-
+import { getClothes } from "../redux/slices/clothesSlice";
 // Functions
 import { getFilterArray } from "../functions/SearchService";
 import { clothesArrayOrSkeleton } from "../functions/ClothesRender";
 
 function Main() {
     const dispatch = useDispatch();
-
+    const status = useSelector((state) => state.clothes.status);
     // State массива с одеждой 
     const clothes = useSelector((state) => state.clothes.clothes);
     // State тип сортировки
@@ -30,7 +26,7 @@ function Main() {
     // State инпута
     const search = useSelector((state) => state.search.search);
     // State загрузки
-    const isLoading = useSelector((state) => state.loading.loading);
+    const isLoading = useSelector((state) => state.clothes.isLoading);
     // State пагинации
     const paginationCount = useSelector((state) => state.pagination.paginationCount);
 
@@ -39,12 +35,8 @@ function Main() {
         const category = activeCategory === 0 ? '' : 'category=' + activeCategory;
         const sort = sortType.type !== 'nosort' ? '&sortBy=' + sortType.type + '&order=' + sortType.desc : '';
 
-        let url = `https://64c8c994a1fe0128fbd635d0.mockapi.io/clothes?page=${paginationCount}&limit=9&${category}${sort}`
-        ClothesService.getClothes(url)
-            .then(res => {
-                dispatch(updateClothes(res))
-                dispatch(setIsLoading(true));
-            })
+        dispatch(getClothes({ category, sort, paginationCount }));
+
     }, [activeCategory, sortType, paginationCount])
 
     return (
@@ -54,9 +46,15 @@ function Main() {
             <Sort />
             <Search />
             <div className='clothesWrapper'>
-                {search === '' ? clothesArrayOrSkeleton(isLoading, clothes) : getFilterArray(search, clothes).map((item) => {
-                    return <Clothes {...item} key={item.id} />
-                })}
+                {status === 'rejected'
+                    ?
+                    <div style={{ textAlign: 'center', fontSize: '40px', padding: '30px 0', color: 'red' }}>
+                        Не удалось получить одежду. Ошибка сервера.</div>
+                    :
+                    search === '' ? clothesArrayOrSkeleton(isLoading, clothes) : getFilterArray(search, clothes).map((item) => {
+                        return <Clothes {...item} key={item.id} />
+                    })
+                }
             </div>
             <Pagination />
         </div>

@@ -1,37 +1,31 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+// style
 import classes from './Cart.module.css';
+// redux 
+import { useSelector, useDispatch } from 'react-redux';
+// redux functions
+import { clearCart } from '../../redux/slices/cartSlice';
 // Components
 import Header from '../../components/Header/Header'
-import { Link } from 'react-router-dom'
 import MyButton from '../../components/UI/MyButton/MyButton';
+import CartList from '../../components/CartList/CartList';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+
   return (
     <>
       <Header />
       <div className={classes.cart}>
         <Link to='/' className={classes.link}>Назад</Link>
         <div className={classes.price}>
-          <h3>Общая цена: <span>10000</span></h3>
-          <MyButton>Отчистить корзину</MyButton>
+          <h3>Общая цена: <span>{totalAmount}</span>₽</h3>
+          <MyButton onClick={() => { dispatch(clearCart()) }}>Отчистить корзину</MyButton>
         </div>
-        <ul className={classes.list}>
-          <li className={classes.item}>
-            <img src='https://a.lmcdn.ru/product/M/P/MP002XM000E9_20485212_1_v1.jpg' alt='' />
-            <div className={classes.info}>
-              <div className={classes.left}>
-                <h4 className={classes.title}>Название: <span>Nike</span></h4>
-                <span>Цена: 10000</span>
-                <br />
-                <span>Размер: M</span>
-              </div>
-              <div className={classes.right}>
-                <MyButton>Удалить товар</MyButton>
-                <p className={classes.count}>Колличество товаров: <strong>5</strong></p>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <CartList />
+
       </div>
     </>
   )
