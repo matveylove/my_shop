@@ -10,7 +10,7 @@ export const getClothes = createAsyncThunk(
 )
 
 const clothesSlice = createSlice({
-    name: 'clothes',
+    name: 'clothes', 
     initialState: {
         clothes: [],
         isLoading: false,

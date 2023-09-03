@@ -1,7 +1,7 @@
 import classes from './Clothes.module.css';
 import { useState } from 'react';
 // redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // redux functions
 import { setItems } from '../../redux/slices/cartSlice';
 // Components

@@ -1,7 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-
-import { ROUTES } from "../routes/routes";
 // Components
 import Header from "../components/Header/Header";
 import Categories from "../components/Categories/Categories";
